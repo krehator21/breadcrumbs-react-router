@@ -1,6 +1,6 @@
 {
-  "name": "semantic-test",
-  "version": "0.1.0",
+  "name": "breadcrums-react-router",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "react": "^16.5.2",
