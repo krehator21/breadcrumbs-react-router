@@ -10,7 +10,7 @@ const First = (props) => {
   <Button onClick={() => props.addToNavBar('/second', "Name")}>Yellow</Button>
   </Link>
   </div>)
-}
+};
 
 
 

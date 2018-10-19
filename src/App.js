@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Breadcrumb } from 'semantic-ui-react'
-import {BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom'
-import Test from './Test'
-import First from './views/First'
-import Second from './views/Second'
-import Third from './views/Third'
-import NavBar from './NavBar'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import First from './views/First';
+import Second from './views/Second';
+import Third from './views/Third';
+import NavBar from './NavBar';
 
 
 class App extends Component {
 
   constructor(){
-    super()
+    super();
     this.state = {
       nav: [["/first", "Home"]]
   }
@@ -21,17 +18,19 @@ class App extends Component {
 
   sayHello = () => {
     alert("hello")
-  }
+  };
 
   addToNavBar = (path, displayName) => {
-    this.setState({nav: [...this.state.nav, [path, displayName]]}, () => console.log(this.state.nav))
-  }
+    this.setState(prevState => ({
+        nav: [...prevState.nav, [path, displayName]]}));
+      console.log(this.state.nav);
+  };
 
   rollBackNavBar = (destination) => {
-    console.log("roll back to", destination)
-    this.setState({nav: this.state.nav.slice(0, destination + 1)})
-  }
-
+    console.log("roll back to", destination);
+    this.setState(prevSate => ({
+        nav: prevSate.nav.slice(0, destination + 1)}));
+  };
 
   render() {
     return (

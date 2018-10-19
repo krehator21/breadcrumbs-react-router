@@ -26,3 +26,38 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+   width: 1600px;
+   height: 40px;
+   /* grey8 */
+   background: #2C3B47;
+  list-style-type: none;
+  color: #FFFFFF !important;
+}
+
+.breadcrumb .breadcrumb-item {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  margin-right: 5px;
+  text-decoration: underline;
+}
+
+.breadcrumb .breadcrumb-item a {
+  color: #FFFFFF !important;
+}
+
+.breadcrumb .breadcrumb-item.disable-link {
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.breadcrumb .breadcrumb-item  a li+li:before{
+  pointer-events: none;
+  text-decoration: none;
+  content: "/\00a0";
+}

@@ -1,6 +1,5 @@
-import React from 'react'
-import {Button} from 'semantic-ui-react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import {Button} from 'semantic-ui-react';
 
 const Third = (props) => {
 
@@ -8,8 +7,8 @@ const Third = (props) => {
   <h1>Choose a Location</h1>
     <Button onClick={() => alert("Hooray, party at Neil's house and the offial color is yellow!!!!!!!")}>Neil's house</Button>
   </div>)
-}
+};
 
 
 
-export default Third
+export default Third;
