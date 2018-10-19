@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import First from './views/First';
-import Second from './views/Second';
-import Third from './views/Third';
-import NavBar from './NavBar';
+import { Forside } from './views/Forside';
+import { Saksliste } from './views/Saksliste';
+import { Sak } from './views/Sak';
+import { NavBar } from './NavBar';
 
 
 class App extends Component {
@@ -12,7 +12,10 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      nav: [["/first", "Home"]]
+      nav: [
+          ["/", "Forside"],
+          ["/", "Løsøreregisteret"]
+      ]
   }
 }
 
@@ -38,9 +41,9 @@ class App extends Component {
       <div>
         <NavBar nav={this.state.nav} rollBackNavBar={this.rollBackNavBar}/>
           <br/><br/>
-          <Route path="/first" render={() => <First addToNavBar={this.addToNavBar} />} />
-          <Route path="/second" render={() => <Second addToNavBar={this.addToNavBar} />}/>
-          <Route path="/third" render={() => <Third addToNavBar={this.addToNavBar} />}/>
+          <Route exact path="/" render={() => <Forside addToNavBar={this.addToNavBar} />} />
+          <Route path="/saksliste" render={() => <Saksliste addToNavBar={this.addToNavBar} />}/>
+          <Route path="/sak/:id?" render={({match}) => <Sak addToNavBar={this.addToNavBar} match ={match} />}/>
         </div>
     </Router>
     );

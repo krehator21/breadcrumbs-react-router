@@ -3,7 +3,7 @@ import {Breadcrumb} from 'semantic-ui-react'
 import {Link, NavLink} from 'react-router-dom'
 import classNames from 'classnames';
 
-const NavBar = (props) => {
+export const NavBar = (props) => {
 
   let content = [];
   let olContent = [];
@@ -16,9 +16,9 @@ const NavBar = (props) => {
           onClick={() =>  props.rollBackNavBar(i)} to={props.nav[i][0]}>{props.nav[i][1]}
           </Breadcrumb.Section>);
         olContent.push(<li className={classNames('breadcrumb-item', 'disable-link')} key={i} >
-            <Link to={props.nav[i][0]} onClick={() => props.rollBackNavBar(i)}>
+            <NavLink to={props.nav[i][0]} onClick={() => props.rollBackNavBar(i)}>
                 {props.nav[i][1]}
-            </Link>
+            </NavLink>
         </li>);
     } else {
       content.push(
@@ -30,22 +30,26 @@ const NavBar = (props) => {
               <Breadcrumb.Divider />
           </React.Fragment>);
         olContent.push(<React.Fragment key={i}><li className = "breadcrumb-item">
-            <Link to={props.nav[i][0]} onClick={() => props.rollBackNavBar(i)}>
+            <NavLink to={props.nav[i][0]} onClick={() => props.rollBackNavBar(i)}>
                 {props.nav[i][1]}
-            </Link>
+            </NavLink>
         </li>
         </React.Fragment>);
     }
   }
 
+  const viewNavBar = (olContent.length > 2);
 
-return (
-    <nav>
-        <ul className = "breadcrumb" >
-            {olContent}
-        </ul>
-        <Breadcrumb size="massive"> {content}</Breadcrumb>
-    </nav>)
+  if (viewNavBar){
+      return (
+          <nav>
+              <ul className = "breadcrumb" >
+                  {olContent}
+              </ul>
+              <Breadcrumb size="massive"> {content}</Breadcrumb>
+          </nav>
+      );
+  }
+
+  return null;
 };
-
-export default NavBar
