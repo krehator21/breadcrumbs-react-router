@@ -4,8 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Forside } from './views/Forside';
 import { Saksliste } from './views/Saksliste';
 import { Sak } from './views/Sak';
-import { NavBar } from './NavBar';
-
+import { NavBar } from './nav/NavBar';
 
 class App extends Component {
 
@@ -18,10 +17,6 @@ class App extends Component {
       ]
   }
 }
-
-  sayHello = () => {
-    alert("hello")
-  };
 
   addToNavBar = (path, displayName) => {
     this.setState(prevState => ({
@@ -36,14 +31,15 @@ class App extends Component {
   };
 
   render() {
+    const navBarMinSize = 1;
     return (
       <Router>
       <div>
-        <NavBar nav={this.state.nav} rollBackNavBar={this.rollBackNavBar}/>
+        <NavBar navBarMinSize={navBarMinSize} nav={this.state.nav} rollBackNavBar={this.rollBackNavBar}/>
           <br/><br/>
           <Route exact path="/" render={() => <Forside addToNavBar={this.addToNavBar} />} />
-          <Route path="/saksliste" render={() => <Saksliste addToNavBar={this.addToNavBar} />}/>
-          <Route path="/sak/:id?" render={({match}) => <Sak addToNavBar={this.addToNavBar} match ={match} />}/>
+          <Route exact path="/saksliste" render={() => <Saksliste addToNavBar={this.addToNavBar} />}/>
+          <Route path="/saksliste/sak/:id?" render={(props) => <Sak {...props} addToNavBar={this.addToNavBar} />}/>
         </div>
     </Router>
     );

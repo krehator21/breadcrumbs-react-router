@@ -23,11 +23,16 @@ export const Saksliste = (props) => {
 
   const caseListLinks = caseList.map((sak) => {
     return (
-        <Link to={{pathname: `/sak/${sak.id}`,
-            state: {sak}}}>
+        <Link to={
+            {pathname: '/saksliste/sak/' + sak.id,
+            state:
+                {id: sak.id,
+                    description: sak.description
+            }
+            }} key={sak.id}>
             <button
                 className="sak-button"
-                onClick={() => props.addToNavBar(`/sak/${sak.id}`, `Sak - ${sak.id}`)}>
+                onClick={() => props.addToNavBar('/saksliste/sak/' + sak.id, 'Sak - ' + sak.id)}>
                 sak - {sak.id}
                 </button>
         </Link>
@@ -36,9 +41,9 @@ export const Saksliste = (props) => {
 
   return (
       <div>
-  <h1>Saker: </h1>
+  <h1>Select sak: </h1>
     <div className="saksliste">
       {caseListLinks}
   </div>
       </div>)
-}
+};
